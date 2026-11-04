@@ -4,7 +4,7 @@ const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 let lang = 'en';
 let stage = 0;
 const zh = {
-  navMot:'研究动机',navMethod:'方法',navResults:'实验结果',navCite:'引用',navProblem:'问题图解',navTakeaway:'核心结论',chip1:'定位 shortcut',chip2:'去耦表面线索',chip3:'一致的安全决策',compareBoth:'并排对比',replayBars:'↻ 重播动画',viewOriginal:'查看论文原图',problemKicker:'以数据呈现问题 · FIGURE 1',problemTitle:'相同的指令, 不同的防御.',problemDesc:'仅移除格式模板, 观察不同对齐方法的防御成功率如何变化.',problemUnit:'防御成功率 (%) ↑',problemImpact:'移除外层模板, 暴露对 shortcut 的依赖.',problemSource:'Figure 1 · 按原图标注转录, 保留一位小数. 对比完整 post-training template 与无模板条件, 省略仅保留预训练模板的柱形. 点击柱子查看数值, 使用图例选择方法. 纵轴从零开始.',eyebrow:'超越表面线索的安全对齐',
+  navMot:'研究动机',navMethod:'方法',navResults:'实验结果',navCite:'引用',navProblem:'问题图解',navTakeaway:'核心结论',chip1:'定位 shortcut',chip2:'去耦表面线索',chip3:'一致的安全决策',compareBoth:'并排对比',replayBars:'↻ 重播动画',viewOriginal:'查看论文原图',problemKicker:'以数据呈现问题 · FIGURE 1',problemTitle:'相同的指令, 不同的防御.',problemDesc:'仅移除格式模板, 观察不同对齐方法的防御成功率如何变化.',problemUnit:'防御成功率 (%) ↑',problemImpact:'移除外层模板, 暴露对 shortcut 的依赖.',problemSource:'Figure 1 · 按原图标注转录, 保留一位小数. 对比原图红色的预训练模板与蓝色的无模板条件, 省略 Base 的额外 post-training template 柱形. 点击柱子查看数值, 使用图例选择方法. 纵轴从零开始.',eyebrow:'超越表面线索的安全对齐',
   paperTitle:'去耦虚假捷径, 实现大推理模型的鲁棒安全对齐',corresponding:'† 通讯作者',paper:'阅读论文',code:'代码与数据',explore:'探索方法',
   heroDesc:'安全的推理模型需要理解模板与关键词背后的意图.<br> DeShortcut-Align 降低对 shortcut 的依赖, 同时保留提供帮助的能力.',
   inputLabel:'同一条用户指令',intent:'用户意图',safeDecision:'鲁棒的安全决策',usefulAnswer:'有帮助的良性回答',

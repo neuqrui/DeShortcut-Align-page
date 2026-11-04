@@ -1,13 +1,13 @@
 // Adapted from neuqrui/SCOPE-page experience/results.js.
-// Figure 1: displayed one-decimal labels, full post-training template / no template.
+// Figure 1: printed one-decimal red (pre-training template) / blue (no template) labels.
 const root=document.querySelector('#problem-chart');
 const $=s=>root.querySelector(s), $$=s=>[...root.querySelectorAll(s)];
 const methods=['Base','TARS','SFT','STAR-1','PPO','GRPO'];
 const colors=['#a9b9d2','#99bdb5','#b39bce','#d6a8c3','#d4bc9b','#929cd0'];
 const data={
-  wildjailbreak:{label:'WildJailbreak',n:250,full:[52.0,76.8,84.8,87.2,100.0,100.0],bare:[49.2,63.2,77.6,70.0,89.6,97.2]},
-  strongreject:{label:'StrongReject',n:939,full:[49.6,91.4,99.0,99.7,98.5,100.0],bare:[34.5,65.1,77.7,83.4,72.1,93.2]},
-  wildchat:{label:'WildChat',n:370,full:[67.8,76.0,86.8,85.1,96.2,99.7],bare:[51.9,63.2,76.8,72.4,80.8,89.7]}
+  wildjailbreak:{label:'WildJailbreak',n:250,full:[45.2,70.0,84.8,87.2,100.0,100.0],bare:[49.2,63.2,77.6,70.0,89.6,97.2]},
+  strongreject:{label:'StrongReject',n:939,full:[35.1,91.0,99.0,99.7,98.5,100.0],bare:[34.5,65.1,77.7,83.4,72.1,93.2]},
+  wildchat:{label:'WildChat',n:370,full:[58.9,76.0,86.8,85.1,96.2,99.7],bare:[51.9,63.2,76.8,72.4,80.8,89.7]}
 };
 let language=document.documentElement.lang==='zh-CN'?'zh':'en',benchmark='wildjailbreak',condition='compare',visible=false;
 const disabled=new Set();
@@ -19,8 +19,8 @@ function animate(){
   animationFrame=requestAnimationFrame(()=>{animationFrame=requestAnimationFrame(()=>{if(!visible)return;root.classList.remove('bars-reset');root.classList.add('bars-risen');});});
 }
 function inspect(index){
-  const d=data[benchmark],gap=(d.full[index]-d.bare[index]).toFixed(1);
-  $('.bars-readout').textContent=t(`${methods[index]} · ${d.label}: ${d.full[index].toFixed(1)}% with template → ${d.bare[index].toFixed(1)}% without template (−${gap} pp).`,`${methods[index]} · ${d.label}: 保留模板 ${d.full[index].toFixed(1)}% → 移除模板 ${d.bare[index].toFixed(1)}% (−${gap} 个百分点).`);
+  const d=data[benchmark],gap=d.full[index]-d.bare[index],signed=`${gap>=0?'−':'+'}${Math.abs(gap).toFixed(1)}`;
+  $('.bars-readout').textContent=t(`${methods[index]} · ${d.label}: ${d.full[index].toFixed(1)}% with template → ${d.bare[index].toFixed(1)}% without template (${signed} pp).`,`${methods[index]} · ${d.label}: 保留模板 ${d.full[index].toFixed(1)}% → 移除模板 ${d.bare[index].toFixed(1)}% (${signed} 个百分点).`);
 }
 function render(){
   const d=data[benchmark],container=$('.benchmark-bars');container.replaceChildren();
