@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DeShortcut-Align · Robust Safety Alignment</title>
+  <meta name="description" content="Decoupling Spurious Shortcuts for Robust Safety Alignment in Large Reasoning Models. Explore the method, interactive explanations, and research results.">
+  <meta name="theme-color" content="#f8faf8">
+  <meta property="og:title" content="DeShortcut-Align">
+  <meta property="og:description" content="Beyond surface cues. Toward intent-sensitive safety alignment.">
+  <meta property="og:image" content="https://neuqrui.github.io/DeShortcut-Align-page/assets/social.png">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><img src="assets/favicon.png" width="35" height="35" alt=""><span>DeShortcut<span class="brand-light">-Align</span><i>.</i></span></a>
+    <nav aria-label="Main navigation"><a href="#motivation" data-t="navMot">Motivation</a><a href="#method" data-t="navMethod">Method</a><a href="#results" data-t="navResults">Results</a><a href="#citation" data-t="navCite">Citation</a></nav>
+    <div class="nav-right"><button class="language" id="language" aria-label="Switch to Chinese">EN <span>/ 中文</span></button><a class="nav-code" href="https://github.com/neuqrui/DeShortcut-Align" target="_blank" rel="noopener">GitHub <span>↗</span></a></div>
+  </div><div class="reading-progress" id="progress"></div>
+</header>
+<main id="main">
+  <section class="hero" id="top">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow"><span class="status-dot"></span><span data-t="eyebrow">SAFETY ALIGNMENT, BEYOND SURFACE CUES</span></p>
+      <div class="hero-brand"><img src="assets/mascot.webp" width="132" height="132" alt="DeShortcut-Align fox mascot" fetchpriority="high"><h1>DeShortcut<span>-Align</span><i>.</i></h1></div>
+      <h2 class="paper-title" data-t="paperTitle">Decoupling Spurious Shortcuts for Robust Safety Alignment in Large Reasoning Models</h2>
+      <p class="authors"><a href="https://neuqrui.github.io/" target="_blank" rel="noopener">Qirui Liu<sup>1</sup></a><span>Yichen Sun<sup>1</sup></span><span>Yan Wang<sup>2</sup></span><a href="mailto:zhixuanchu@zju.edu.cn">Zhixuan Chu<sup>1,†</sup></a><span>Linbo Jiang</span><span>Jianan Lin<sup>3</sup></span><span>Kui Ren<sup>1</sup></span></p>
+      <p class="affiliations"><span><sup>1</sup> Zhejiang University</span><span><sup>2</sup> Ant Group</span><span><sup>3</sup> Chongqing Ant Consumer Finance Co., Ltd</span></p>
+      <p class="corresponding" data-t="corresponding">† Corresponding author</p>
+      <div class="hero-actions"><a class="button primary" href="https://arxiv.org/abs/2609.34896" target="_blank" rel="noopener"><span class="icon">▤</span><span data-t="paper">Read the paper</span><span>↗</span></a><a class="button" href="https://github.com/neuqrui/DeShortcut-Align" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.86c-2.78.6-3.37-1.18-3.37-1.18-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.84c.85 0 1.71.11 2.51.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg><span data-t="code">Code & data</span><span>↗</span></a><a class="button" href="#method"><span>⌘</span><span data-t="explore">Explore the method</span><span>↓</span></a></div>
+      <p class="hero-description" data-t="heroDesc">A safer reasoning model should look past the template and the keyword.<br> DeShortcut-Align reduces shortcut reliance while preserving the ability to help.</p>
+      <div class="hero-flow" aria-label="Framework overview">
+        <div class="flow-input"><span class="mono" data-t="inputLabel">THE SAME INSTRUCTION</span><div><code>&lt;template&gt;</code><b data-t="intent">User intent</b><code>&lt;/template&gt;</code></div></div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-core"><span class="core-orbit" aria-hidden="true"></span><svg viewBox="0 0 44 48" aria-hidden="true"><path d="M22 3 39 10v13c0 11-17 21-17 21S5 34 5 23V10Z"/><path d="m14 23 6 6 11-13"/></svg><span>DeShortcut-Align</span></div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-output"><span><i>✓</i><b data-t="safeDecision">Robust safety decisions</b></span><span><i>✓</i><b data-t="usefulAnswer">Helpful benign responses</b></span></div>
+      </div>
+      <div class="metrics"><article><span class="metric-label" data-t="metric1">Smaller template gap</span><strong>72.2<span>% ↓</span></strong><p data-t="metric1Note">7B · SFT vs. standard SFT</p></article><article><span class="metric-label" data-t="metric2">Fewer false rejections</span><strong>58.3<span>% ↓</span></strong><p data-t="metric2Note">7B · GRPO vs. standard GRPO</p></article><article><span class="metric-label" data-t="metric3">Jailbreak defense</span><strong>97.7<span>%</span></strong><p data-t="metric3Note">7B · RL · PAIR / GCG / TAP</p></article></div>
+      <p class="metric-source"><a href="#results" data-t="metricSource">Paper Tables 1 & 4 · Relative reductions are specific to the settings above.</a></p>
+    </div>
+  </section>
+
+  <section id="motivation" class="section container">
+    <div class="section-head"><p class="section-label"><span>01</span><span data-t="motLabel">THE MOTIVATION</span></p><h2 data-t="motTitle">When looking safe<br>is a shortcut.</h2><p data-t="motDesc">Near-perfect safety scores can hide fragile behavior. We identify two superficial cues that pull safety alignment away from the underlying intent.</p></div>
+    <div class="motivation-grid">
+      <article class="insight"><div class="insight-top"><span class="symbol blue">⌗</span><span class="mono" data-t="formatLabel">FORMATTING SHORTCUT</span></div><h3 data-t="formatTitle">Change the wrapper.<br>Lose the defense.</h3><p data-t="formatDesc">The instruction stays the same, but removing chat templates can sharply reduce defense success. The model has learned to rely on the wrapper.</p><div class="template-demo"><div class="toggle-group" id="template-controls" aria-label="Template condition"><button data-template="with" aria-pressed="true" data-t="withTemplate">With template</button><button data-template="without" aria-pressed="false" data-t="withoutTemplate">Without template</button></div><div class="prompt-shell" id="prompt-shell"><span class="wrapper">&lt;｜User｜&gt;</span><span data-t="fixedInstruction">[ The same harmful instruction ]</span><span class="wrapper">&lt;｜Assistant｜&gt;&lt;think&gt;</span></div><div class="mini-comparison"><div><span>GRPO</span><div class="track"><i id="template-bar"></i></div><strong id="template-value">100.00%</strong></div><p data-t="templateNote">StrongReject DSR · DeepSeek-R1-Distill-Qwen-7B · Table 1</p></div></div></article>
+      <article class="insight lexical"><div class="insight-top"><span class="symbol teal">Aa</span><span class="mono" data-t="lexLabel">LEXICAL SHORTCUT</span></div><h3 data-t="lexTitle">Keep the keyword.<br>Change the intent.</h3><p data-t="lexDesc">Sensitive vocabulary also appears in legitimate requests. Treating a keyword as the decision rule leads to unnecessary refusals.</p><div class="intent-example"><span class="example-tag" data-t="example">ILLUSTRATIVE EXAMPLE</span><blockquote><span data-t="benignExample">“How can I protect my database from an</span> <mark>SQL injection</mark> <span data-t="benignEnd">attack?”</span></blockquote><div class="response-line"><span class="cross">×</span><span data-t="keywordResponse">Keyword shortcut</span><b data-t="refuse">Refuse</b></div><div class="response-line"><span class="check">✓</span><span data-t="intentResponse">Intent-sensitive decision</span><b class="green" data-t="help">Help defend</b></div></div></article>
+    </div>
+    <figure class="paper-figure"><button class="figure-button" data-zoom="assets/template-vulnerability.webp" aria-label="Enlarge Figure 1"><img src="assets/template-vulnerability.webp" width="1630" height="324" alt="Figure 1. Defense success under post-training, pre-training, and no-template conditions for six alignment methods." loading="lazy"><span class="zoom-tag" data-t="zoom">⤢ View larger</span></button><figcaption data-t="fig1">Figure 1 · Removing formatting templates exposes a defense gap across WildJailbreak, StrongReject, and WildChat. Original figure from the paper.</figcaption></figure>
+  </section>
+
+  <section class="method-section" id="method"><div class="container section">
+    <div class="section-head"><p class="section-label"><span>02</span><span data-t="methodLabel">THE APPROACH</span></p><h2 data-t="methodTitle">Find the cues.<br>Decouple the decision.</h2><p data-t="methodDesc">Three coordinated stages address lexical and formatting shortcuts across supervised fine-tuning and reinforcement learning.</p></div>
+    <div class="method-lab">
+      <div class="lab-top"><span><i class="status-dot"></i><span data-t="labTitle">INSIDE DESHORTCUT-ALIGN</span></span><span class="mono" data-t="schematic">INTERACTIVE SCHEMATIC</span></div>
+      <div class="stage-tabs" role="tablist" aria-label="Method stages"><button id="tab-0" role="tab" aria-selected="true" aria-controls="stage-panel" data-stage="0"><span>01</span><b data-t="stage1">Attribute</b><small>TSS</small></button><button id="tab-1" role="tab" aria-selected="false" aria-controls="stage-panel" tabindex="-1" data-stage="1"><span>02</span><b data-t="stage2">Augment</b><small>AGCA</small></button><button id="tab-2" role="tab" aria-selected="false" aria-controls="stage-panel" tabindex="-1" data-stage="2"><span>03</span><b data-t="stage3">Regularize</b><small>CCR</small></button></div>
+      <div class="stage-panel" id="stage-panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0"><div class="stage-copy"><p class="mono" id="stage-kicker"></p><h3 id="stage-title"></h3><p id="stage-description"></p><div class="formula" id="stage-formula"></div><p class="stage-footnote" id="stage-note"></p><button class="text-button" id="next-stage"><span data-t="nextStage">Next stage</span> <span>→</span></button></div><div class="stage-visual" id="stage-visual" aria-live="polite"></div></div>
+      <div class="lab-bottom"><span data-t="labNote">Mechanism illustration · no live model inference</span><span>SFT + PPO + GRPO</span></div>
+    </div>
+    <figure class="paper-figure method-figure"><div class="figure-heading"><span class="mono" data-t="fullFramework">THE COMPLETE FRAMEWORK</span><a href="https://arxiv.org/pdf/2609.34896#page=4" target="_blank" rel="noopener" data-t="paperFig">Figure 3 in the paper ↗</a></div><button class="figure-button" data-zoom="assets/method.webp" aria-label="Enlarge method diagram"><img src="assets/method.webp" width="2160" height="927" alt="Figure 3. DeShortcut-Align framework: refusal sensitivity attribution, attribution-guided contrastive augmentation, and counterfactual consistency regularization in SFT and RL." loading="lazy"><span class="zoom-tag" data-t="zoom">⤢ View larger</span></button><figcaption data-t="fig3">Figure 3 · TSS identifies refusal-sensitive tokens; AGCA retains those tokens while inverting intent; CCR blinds formatting tokens and trains consistent behavior under the counterfactual input. Original diagram from the paper.</figcaption></figure>
+  </div></section>
+
+  <section id="results" class="section container">
+    <div class="section-head"><p class="section-label"><span>03</span><span data-t="resultsLabel">THE EVIDENCE</span></p><h2 data-t="resultsTitle">More robust.<br>Less over-refusal.</h2><p data-t="resultsDesc">Explore the balance between template robustness, benign-query helpfulness, and general reasoning across three model backbones.</p></div>
+    <div class="results-board"><div class="results-toolbar"><div><span class="mono" data-t="mainResults">MAIN RESULTS · TABLE 1</span><h3 data-t="compare">The same backbone. A clearer comparison.</h3></div><label class="model-select"><span data-t="backbone">Backbone</span><select id="model"><option value="7b">DeepSeek-R1-Distill-Qwen-7B</option><option value="14b">DeepSeek-R1-Distill-Qwen-14B</option><option value="4b">Qwen3-4B (thinking)</option></select></label></div><div class="result-legend"><span><i class="legend-base"></i><span data-t="standardGrpo">Standard GRPO</span></span><span><i class="legend-ours"></i>DeShortcut-Align (GRPO)</span></div><div class="result-charts" id="result-charts" aria-live="polite"></div><p class="board-note" data-t="resultsNote">Δavg: mean with-template minus without-template DSR across 3 safety benchmarks (percentage points). FRR: average false rejection rate across XSTest, OKTest, and FalseReject. Reasoning: average pass@1 across MATH-500, MMLU, LiveCodeBench, and HumanEval.</p><div class="safety-note" id="safety-note"></div></div>
+    <figure class="paper-figure"><div class="figure-heading"><span class="mono" data-t="allResults">ALL METHODS & ALL BACKBONES</span></div><button class="figure-button" data-zoom="assets/main-results.webp" aria-label="Enlarge full results table"><img src="assets/main-results.webp" width="2160" height="1248" alt="Table 1. Full experimental results for Base, SFT, GRPO, Ours SFT and Ours GRPO on 7B, 14B and Qwen3-4B models." loading="lazy"><span class="zoom-tag" data-t="zoom">⤢ View larger</span></button><figcaption data-t="table1">Table 1 · Full results from the paper. Safety is reported with / without templates. Lower template gap and false rejection rate are better; higher reasoning accuracy is better.</figcaption></figure>
+    <div class="evidence-pair"><article class="attack-card"><p class="mono" data-t="attacksLabel">BEYOND TEMPLATE STRIPPING · TABLE 4</p><h3 data-t="attacksTitle">Tested against different attacks.</h3><p data-t="attacksDesc">7B defense success rate. DeShortcut-Align (RL) reaches 97.7% on average across PAIR, GCG, and TAP.</p><div class="attack-bars"><div><b>PAIR</b><span><i style="--bar:100%"></i></span><strong>100.0%</strong></div><div><b>GCG</b><span><i style="--bar:95%"></i></span><strong>95.0%</strong></div><div><b>TAP</b><span><i style="--bar:98%"></i></span><strong>98.0%</strong></div></div><p class="small" data-t="attackBaseline">Standard RL average: 92.7%. Evaluated attack settings are detailed in the paper.</p></article><article class="ablation-card"><p class="mono" data-t="ablationLabel">WHY BOTH COMPONENTS MATTER · TABLE 2</p><h3 data-t="ablationTitle">Two shortcuts.<br>Two complementary controls.</h3><div class="ablation-row"><span>− CCR</span><p data-t="ablationCcr">The template gap rises from 3.63 to 12.94 points in the 7B RL ablation.</p></div><div class="ablation-row"><span>− AGCA</span><p data-t="ablationAgca">False rejection rises from 31.00% to 70.00% in the same setting.</p></div><p class="small" data-t="ablationNote">CCR controls formatting dependence. AGCA reduces lexical over-refusal.</p></article></div>
+  </section>
+
+  <section class="takeaway-section"><div class="container takeaway"><div><p class="section-label"><span>04</span><span data-t="takeawayLabel">THE TAKEAWAY</span></p><h2 data-t="takeawayTitle">Align to the intent.<br>Look beyond the cue.</h2><p data-t="takeawayDesc">DeShortcut-Align provides a practical way to train against two measurable failure patterns, with stronger template robustness and better retention of useful capabilities in the evaluated settings.</p><a class="button primary" href="https://github.com/neuqrui/DeShortcut-Align" target="_blank" rel="noopener"><span data-t="start">Explore the implementation</span><span>↗</span></a></div><div class="takeaway-art"><img src="assets/mascot.webp" alt="DeShortcut-Align mascot cutting shortcut connections" width="300" height="300" loading="lazy"><span class="art-label">Less shortcut. More intent.</span></div></div></section>
+  <section id="citation" class="section container citation-section"><div class="citation-heading"><div><p class="section-label"><span>05</span><span data-t="citeLabel">BUILD ON THIS WORK</span></p><h2 data-t="citeTitle">Citation</h2></div><button class="button" id="copy"><span data-t="copy">Copy BibTeX</span><span>⧉</span></button></div><pre><code id="bibtex">@misc{liu2026deshortcutaligndecouplingspuriousshortcuts,
+  title={DeShortcut-Align: Decoupling Spurious Shortcuts for Robust
+         Safety Alignment in Large Reasoning Models},
+  author={Qirui Liu and Yichen Sun and Yan Wang and Zhixuan Chu
+          and Linbo Jiang and Jianan Lin and Kui Ren},
+  year={2026},
+  eprint={2609.34896},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI},
+  url={https://arxiv.org/abs/2609.34896}
+}</code></pre><p id="copy-status" role="status"></p></section>
+</main>
+<footer><div class="container footer-inner"><a class="brand" href="#top">DeShortcut<span class="brand-light">-Align</span><i>.</i></a><p data-t="footer">Research from Zhejiang University, Ant Group & Chongqing Ant Consumer Finance.</p><a href="https://github.com/neuqrui/DeShortcut-Align-page" target="_blank" rel="noopener" data-t="source">Page source ↗</a></div><p class="credits" data-t="credits">Design inspired by SCOPE and ToolSpace. Figures and results from the DeShortcut-Align paper.</p></footer>
+<dialog id="figure-dialog"><div class="dialog-toolbar"><span data-t="originalFigure">PAPER FIGURE · FULL RESOLUTION</span><button id="close-dialog" aria-label="Close figure">✕</button></div><div class="dialog-image"><img id="zoom-image" alt=""></div><p data-t="dialogHint">Scroll to inspect · Press Esc to close</p></dialog>
+</body>
+</html>

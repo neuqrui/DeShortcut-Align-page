@@ -1,0 +1,30 @@
+# DeShortcut-Align project page
+
+Academic project page for **DeShortcut-Align: Decoupling Spurious Shortcuts for Robust Safety Alignment in Large Reasoning Models**.
+
+- Website: https://neuqrui.github.io/DeShortcut-Align-page/
+- Paper: https://arxiv.org/abs/2609.34896
+- Research code: https://github.com/neuqrui/DeShortcut-Align
+
+## Development
+
+A dependency-free static site. Run `python3 -m http.server 8000` and visit `http://localhost:8000`.
+
+The page includes English/Chinese copy, an interactive three-stage method explanation, template condition switching, model-specific comparisons, full-resolution paper figures, and BibTeX copying. Method animations are explicitly schematic, not live model inference or measured token attribution.
+
+## Data and figure provenance
+
+Figures were cropped from the original paper, arXiv:2609.34896v1:
+
+- `assets/template-vulnerability.webp`: Figure 1, page 2.
+- `assets/method.webp`: Figure 3, page 4.
+- `assets/main-results.webp`: Table 1, page 7.
+- `assets/training-standard.webp`: Figure 2, page 2 (retained source asset).
+
+Interactive main results are transcribed from Table 1. Attack results are from Table 4; ablation comparisons are from Table 2. The 72.2% template-gap reduction is `(12.83 − 3.57) / 12.83`, for 7B SFT. The 58.3% false-rejection reduction is `(74.33 − 31.00) / 74.33`, for 7B GRPO. Main-results comparisons also show with-template weighted DSR so readers can inspect the safety/helpfulness tradeoff.
+
+The mascot is from the official research repository (`assets/deshortcut-align-icon.png`). Design references: [SCOPE](https://neuqrui.github.io/SCOPE-page/) and [ToolSpace](https://toolspace-agent.github.io/). Website code and styling are original; no reference-site code is copied.
+
+## Deployment
+
+GitHub Actions publishes the static files to GitHub Pages on every push to `main`. Configure the repository's Pages source as **GitHub Actions**.
