@@ -3,7 +3,7 @@
 const root=document.querySelector('#problem-chart');
 const $=s=>root.querySelector(s), $$=s=>[...root.querySelectorAll(s)];
 const methods=['Base','TARS','SFT','STAR-1','PPO','GRPO'];
-const colors=['#a9b9d2','#99bdb5','#b39bce','#d6a8c3','#d4bc9b','#929cd0'];
+const colors=['#a1b4d2','#8fb7a5','#88a5c9','#a998c4','#c6b48d','#718fc0'];
 const data={
   wildjailbreak:{label:'WildJailbreak',n:250,full:[45.2,70.0,84.8,87.2,100.0,100.0],bare:[49.2,63.2,77.6,70.0,89.6,97.2]},
   strongreject:{label:'StrongReject',n:939,full:[35.1,91.0,99.0,99.7,98.5,100.0],bare:[34.5,65.1,77.7,83.4,72.1,93.2]},

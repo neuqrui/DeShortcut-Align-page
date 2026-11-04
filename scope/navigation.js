@@ -13,6 +13,7 @@ function update(){
  const max=document.documentElement.scrollHeight-innerHeight;
  if(max>0 && scrollY>=max-5)current=sections.length-1;
  links.forEach((a,i)=>{if(i===current)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
+ document.querySelectorAll('#navigation a[href^="#"]').forEach(a=>{if(current>=0&&a.hash==='#'+sections[current].id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
  root.querySelector('.toc-reading').textContent=`${Math.round(Math.max(0,Math.min(1,max>0?scrollY/max:0))*100)}%`;
  root.querySelector('.toc-toggle-current').textContent=current>=0?links[current].querySelector('[data-i18n]').textContent:'';
  root.dataset.section=current>=0?sections[current].id:'top';
