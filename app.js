@@ -4,9 +4,9 @@ const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 let lang = 'en';
 let stage = 0;
 const zh = {
-  navMot:'研究动机',navMethod:'方法',navResults:'实验结果',navCite:'引用',eyebrow:'超越表面线索的安全对齐',
+  navMot:'研究动机',navMethod:'方法',navResults:'实验结果',navCite:'引用',navProblem:'问题图解',navTakeaway:'核心结论',chip1:'定位 shortcut',chip2:'去耦表面线索',chip3:'一致的安全决策',compareBoth:'并排对比',replayBars:'↻ 重播动画',viewOriginal:'查看论文原图',problemKicker:'以数据呈现问题 · FIGURE 1',problemTitle:'相同的指令, 不同的防御.',problemDesc:'仅移除格式模板, 观察不同对齐方法的防御成功率如何变化.',problemUnit:'防御成功率 (%) ↑',problemImpact:'移除外层模板, 暴露对 shortcut 的依赖.',problemSource:'Figure 1 · 按原图标注转录, 保留一位小数. 对比完整 post-training template 与无模板条件, 省略仅保留预训练模板的柱形. 点击柱子查看数值, 使用图例选择方法. 纵轴从零开始.',eyebrow:'超越表面线索的安全对齐',
   paperTitle:'去耦虚假捷径, 实现大推理模型的鲁棒安全对齐',corresponding:'† 通讯作者',paper:'阅读论文',code:'代码与数据',explore:'探索方法',
-  heroDesc:'安全的推理模型需要理解模板与关键词背后的意图.<br>DeShortcut-Align 降低对 shortcut 的依赖, 同时保留提供帮助的能力.',
+  heroDesc:'安全的推理模型需要理解模板与关键词背后的意图.<br> DeShortcut-Align 降低对 shortcut 的依赖, 同时保留提供帮助的能力.',
   inputLabel:'同一条用户指令',intent:'用户意图',safeDecision:'鲁棒的安全决策',usefulAnswer:'有帮助的良性回答',
   metric1:'模板差距降低',metric2:'误拒率降低',metric3:'越狱攻击防御率',metric1Note:'7B · SFT 对比标准 SFT',metric2Note:'7B · GRPO 对比标准 GRPO',metric3Note:'7B · RL · PAIR / GCG / TAP',metricSource:'论文 Table 1 与 Table 4 · 相对降幅对应上方所列实验设置.',
   motLabel:'研究动机',motTitle:'看似安全,<br>也可能依赖 shortcut.',motDesc:'接近满分的安全得分可能掩盖脆弱的行为. 我们发现两类表面线索, 使安全对齐偏离用户的真实意图.',
@@ -18,7 +18,7 @@ const zh = {
   resultsLabel:'实验证据',resultsTitle:'更鲁棒的防御.<br>更少的过度拒答.',resultsDesc:'在三个模型骨干上, 对比模板鲁棒性、良性请求的误拒率与通用推理能力.',mainResults:'主要实验 · TABLE 1',compare:'相同模型骨干, 直接比较.',backbone:'模型骨干',standardGrpo:'标准 GRPO',
   resultsNote:'Δavg: 三个安全基准上, 保留模板与移除模板的 DSR 平均差值 (百分点). FRR: XSTest、OKTest 和 FalseReject 的平均误拒率. 推理能力: MATH-500、MMLU、LiveCodeBench 与 HumanEval 的平均 pass@1.',allResults:'所有方法与模型骨干',table1:'Table 1 · 论文完整结果. 安全指标以「保留模板 / 移除模板」呈现. 模板差距与误拒率越低越好, 推理准确率越高越好.',
   attacksLabel:'超越模板移除 · TABLE 4',attacksTitle:'面对不同类型的越狱攻击.',attacksDesc:'7B 模型的防御成功率. DeShortcut-Align (RL) 在 PAIR、GCG 与 TAP 上达到 97.7% 的平均 DSR.',attackBaseline:'标准 RL 的平均值为 92.7%. 具体攻击设置见论文.',ablationLabel:'两类组件的作用 · TABLE 2',ablationTitle:'两类 shortcut.<br>两种互补约束.',ablationCcr:'在 7B 的 RL 消融中, 模板差距从 3.63 上升至 12.94 个百分点.',ablationAgca:'相同设置下, 误拒率从 31.00% 上升至 70.00%.',ablationNote:'CCR 缓解格式依赖. AGCA 降低词汇引发的过度拒答.',
-  takeawayLabel:'核心结论',takeawayTitle:'面向真实意图,<br>超越表面线索.',takeawayDesc:'DeShortcut-Align 针对两类可测量的失败模式提供了训练方案. 在评测设置下, 它提升模板鲁棒性, 并更好地保留模型的有用能力.',start:'查看实现与训练流程',citeLabel:'在此研究上继续探索',citeTitle:'引用',copy:'复制 BibTeX',footer:'浙江大学、蚂蚁集团与重庆蚂蚁消费金融有限公司的研究工作.',source:'页面源码 ↗',credits:'设计参考 SCOPE 与 ToolSpace. 图表与实验结果来自 DeShortcut-Align 论文.',originalFigure:'论文原图 · 完整分辨率',dialogHint:'滚动查看细节 · 按 Esc 关闭'
+  takeawayLabel:'核心结论',takeawayTitle:'面向真实意图,<br>超越表面线索.',takeawayDesc:'DeShortcut-Align 针对两类可测量的失败模式提供了训练方案. 在评测设置下, 它提升模板鲁棒性, 并更好地保留模型的有用能力.',start:'查看实现与训练流程',citeLabel:'在此研究上继续探索',citeTitle:'引用',copy:'复制 BibTeX',footer:'浙江大学、蚂蚁集团与重庆蚂蚁消费金融有限公司的研究工作.',source:'页面源码 ↗',credits:'页面代码改编自 SCOPE, 并参考 ToolSpace 的交互展示. 图表与实验结果来自 DeShortcut-Align 论文.',originalFigure:'论文原图 · 完整分辨率',dialogHint:'滚动查看细节 · 按 Esc 关闭'
 };
 const originals = new Map($$('[data-t]').map(el => [el, el.innerHTML]));
 function tr(en, cn) { return lang === 'zh' ? cn : en; }
@@ -30,6 +30,7 @@ function setLanguage(value) {
   $('#language').setAttribute('aria-label', value === 'zh' ? 'Switch to English' : '切换到中文');
   try { localStorage.setItem('deshortcut-language', value); } catch {}
   renderStage(); renderResults();
+  document.dispatchEvent(new CustomEvent('scope:languagechange',{detail:{language:value}}));
   $('#copy-status').textContent = '';
 }
 $('#language').addEventListener('click', () => setLanguage(lang === 'en' ? 'zh' : 'en'));
@@ -105,9 +106,12 @@ $('#copy').addEventListener('click',async()=>{
   try{await navigator.clipboard.writeText(text);$('#copy-status').textContent=tr('BibTeX copied.','BibTeX 已复制.');}
   catch{const range=document.createRange();range.selectNodeContents($('#bibtex'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);$('#copy-status').textContent=tr('Citation selected. Press Ctrl+C or ⌘C to copy.','已选中引用内容. 按 Ctrl+C 或 ⌘C 复制.');}
 });
-function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;$('#progress').style.width=`${max>0?scrollY/max*100:0}%`;}
+function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;$('#progress').style.transform=`scaleX(${max>0?scrollY/max:0})`;}
 window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){$$('nav a').forEach(a=>a.classList.toggle('active',a.hash===`#${entry.target.id}`));}}),{rootMargin:'-15% 0px -65% 0px'});
 $$('main section[id]').forEach(section=>observer.observe(section));
 try {lang=localStorage.getItem('deshortcut-language')==='zh'?'zh':'en';}catch{}
 setLanguage(lang);updateProgress();
+const menu=$('.menu-toggle');
+menu.addEventListener('click',()=>{const open=$('#navigation').classList.toggle('menu-open');menu.setAttribute('aria-expanded',String(open));});
+$$('#navigation a').forEach(a=>a.addEventListener('click',()=>{$('#navigation').classList.remove('menu-open');menu.setAttribute('aria-expanded','false');}));
