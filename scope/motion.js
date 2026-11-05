@@ -60,31 +60,9 @@ function applyEffects() {
 toggle.addEventListener('click',()=>{enabled=!enabled;try{localStorage.setItem('deshortcut-effects',enabled?'on':'off');}catch{}applyEffects();});
 const wordmark=document.querySelector('.scope-wordmark');
 function clearBursts(){document.querySelectorAll('.wordmark-particles').forEach(layer=>layer.remove());wordmark.dataset.bursting='false';}
-wordmark.addEventListener('click',event=>{
-  if(!enabled)return;
-  const rect=wordmark.getBoundingClientRect();
-  const x=event.detail>0?event.clientX:rect.left+rect.width/2;
-  const y=event.detail>0?event.clientY:rect.top+rect.height/2;
-  const layer=document.createElement('div');layer.className='wordmark-particles';layer.setAttribute('aria-hidden','true');layer.style.left=`${x}px`;layer.style.top=`${y}px`;
-  const ring=document.createElement('span');ring.className='wordmark-particle-ring';layer.append(ring);
-  for(let i=0;i<72;i++){
-    const particle=document.createElement('i'),angle=i/72*Math.PI*2+(Math.random()-.5)*.18,distance=70+Math.random()*180;
-    particle.className=i%7===0?'burst-star':i%3===0?'burst-petal':'burst-dot';
-    particle.style.setProperty('--dx',`${Math.cos(angle)*distance}px`);
-    particle.style.setProperty('--dy',`${Math.sin(angle)*distance+35}px`);
-    particle.style.setProperty('--rotation',`${Math.random()*300}deg`);
-    particle.style.setProperty('--particle-color',`rgb(${colors[i%colors.length]})`);
-    particle.style.setProperty('--particle-size',`${3+Math.random()*5}px`);
-    particle.style.setProperty('--particle-duration',`${800+Math.random()*550}ms`);
-    layer.append(particle);
-  }
-  document.body.append(layer);wordmark.dataset.bursting='true';
-  const layers=[...document.querySelectorAll('.wordmark-particles')];while(layers.length>3)layers.shift().remove();
-  setTimeout(()=>{layer.remove();wordmark.dataset.bursting=String(Boolean(document.querySelector('.wordmark-particles')));},1450);
-});
 window.addEventListener('pagehide',clearBursts);
 window.addEventListener('pointermove',e=>{
-  if(!enabled||!finePointer.matches||e.pointerType==='touch')return;
+  if(!enabled||!heroVisible||!finePointer.matches||e.pointerType==='touch')return;
   if(Math.hypot(e.clientX-pointer.x,e.clientY-pointer.y)>2){pointer={x:e.clientX,y:e.clientY};traces.push({...pointer,born:performance.now(),color:Math.floor(performance.now()/200)%colors.length});if(traces.length>65)traces.shift();schedule();}
 },{passive:true});
 window.addEventListener('resize',()=>{resize();schedule();},{passive:true});
@@ -92,7 +70,7 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnim
 reduced.addEventListener('change',e=>{enabled=!e.matches;applyEffects();});
 new IntersectionObserver(([entry])=>{heroVisible=entry.isIntersecting;schedule();}).observe(document.querySelector('.hero'));
 const expWords={heroScroll:['See how SCOPE learns','看看 SCOPE 如何学习'],chipFind:['Find the error','定位关键错误'],chipFindSub:['STEP-SPECIFIC SKILLS','步骤级技能'],chipBound:['Bound the signal','约束纠正强度'],chipBoundSub:['SIGNED · SELECTIVE','带符号 · 选择性'],chipReward:['Learn efficiently','更高效地学习'],chipRewardSub:['SUCCESS-RELATIVE','成功轨迹之间的比较']};
-function translate(){document.querySelectorAll('[data-exp]').forEach(e=>{const text=expWords[e.dataset.exp];if(text)e.textContent=text[language==='zh'?1:0];});wordmark.setAttribute('aria-label',language==='zh'?'DeShortcut-Align, 点击绽放粒子':'DeShortcut-Align, activate a particle burst');label();}
+function translate(){document.querySelectorAll('[data-exp]').forEach(e=>{const text=expWords[e.dataset.exp];if(text)e.textContent=text[language==='zh'?1:0];});wordmark.setAttribute('aria-label',language==='zh'?'DeShortcut-Align, 点击分散或聚合标题':'DeShortcut-Align, click to disperse or assemble the title');label();}
 document.addEventListener('scope:languagechange',e=>{language=e.detail.language;translate();});
 // Section reveals never affect keyboard focus, browser find, or anchor destinations.
 const reveal = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');reveal.unobserve(e.target);}}),{threshold:.06});
