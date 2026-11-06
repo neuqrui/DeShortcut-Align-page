@@ -10,18 +10,18 @@
   <meta property="og:description" content="Beyond surface cues. Toward intent-sensitive safety alignment.">
   <meta property="og:image" content="https://neuqrui.github.io/DeShortcut-Align-page/assets/social.png">
   <link rel="icon" href="assets/favicon.png">
-  <link rel="stylesheet" href="scope/base.css?v=20261106-flow-v3">
-  <link rel="stylesheet" href="scope/experience.css?v=20261106-flow-v3">
-  <link rel="stylesheet" href="scope/refinements.css?v=20261106-flow-v3">
-  <link rel="stylesheet" href="scope/release.css?v=20261106-flow-v3">
-  <link rel="stylesheet" href="styles.css?v=20261106-flow-v3"><link rel="stylesheet" href="scope/editorial.css?v=20261106-flow-v3">
-  <script src="scope/math.js?v=20261106-flow-v3" defer></script><script src="scope/attribution.js?v=20261106-flow-v3" defer></script><script src="scope/results-data.js?v=20261106-flow-v3" defer></script><script src="scope/mixed-flow.js?v=20261106-flow-v3" defer></script><script src="scope/method-motion.js?v=20261106-flow-v3" defer></script><script src="app.js?v=20261106-flow-v3" defer></script><script type="module" src="scope/hero.js?v=20261106-flow-v3"></script>
-  <script type="module" src="scope/motion.js?v=20261106-flow-v3"></script>
-  <script type="module" src="scope/navigation.js?v=20261106-flow-v3"></script>
-  <script type="module" src="scope/problem.js?v=20261106-flow-v3"></script>
-  <link rel="stylesheet" href="scope/revision.css?v=20261106-flow-v3">
-  <script type="module" src="scope/causal.js?v=20261106-flow-v3"></script>
-  <link rel="stylesheet" href="scope/night.css?v=20261106-flow-v3">
+  <link rel="stylesheet" href="scope/base.css?v=20261106-figure2-v5">
+  <link rel="stylesheet" href="scope/experience.css?v=20261106-figure2-v5">
+  <link rel="stylesheet" href="scope/refinements.css?v=20261106-figure2-v5">
+  <link rel="stylesheet" href="scope/release.css?v=20261106-figure2-v5">
+  <link rel="stylesheet" href="styles.css?v=20261106-figure2-v5"><link rel="stylesheet" href="scope/editorial.css?v=20261106-figure2-v5">
+  <script src="scope/math.js?v=20261106-figure2-v5" defer></script><script src="scope/attribution.js?v=20261106-figure2-v5" defer></script><script src="scope/results-data.js?v=20261106-figure2-v5" defer></script><script src="scope/mixed-flow.js?v=20261106-figure2-v5" defer></script><script src="scope/method-motion.js?v=20261106-figure2-v5" defer></script><script src="app.js?v=20261106-figure2-v5" defer></script><script type="module" src="scope/hero.js?v=20261106-figure2-v5"></script>
+  <script type="module" src="scope/motion.js?v=20261106-figure2-v5"></script>
+  <script type="module" src="scope/navigation.js?v=20261106-figure2-v5"></script>
+  <script type="module" src="scope/problem.js?v=20261106-figure2-v5"></script>
+  <link rel="stylesheet" href="scope/revision.css?v=20261106-figure2-v5">
+  <script type="module" src="scope/causal.js?v=20261106-figure2-v5"></script>
+  <link rel="stylesheet" href="scope/night.css?v=20261106-figure2-v5">
 </head>
 <body>
 <canvas id="ambient-particles" aria-hidden="true"></canvas>
@@ -80,6 +80,13 @@
 
     </figure>
 
+    <figure class="causal-lab" id="shortcut-process" aria-labelledby="causal-title">
+      <div class="causal-heading"><div><p class="mono" data-t="causalLabel">THE SHORTCUT TRAP · FLOW & DYNAMICS</p><h3 id="causal-title" data-t="causalTitle">How the learning signal disappears.</h3></div><span class="schematic-badge" data-t="conceptOnly">Approximate reconstruction</span></div>
+      <div class="causal-body"><div class="causal-scene"><canvas id="causal-canvas" role="img" aria-label="Approximate reconstruction of Figure 2: training reward, over-refusal, template gap, and policy-gradient loss magnitude over 0 to 150 training steps"></canvas><div class="causal-curve-legend"><span class="reward" data-t="rewardCurve">Training reward</span><span class="refusal" data-t="refusalCurve">Over-refusal</span><span class="gap" data-t="gapCurve">Template gap</span><span class="gradient" data-t="gradientCurve">PG-loss magnitude</span></div><div class="causal-axis" data-t="causalAxis">Figure 2 · approximate trends reconstructed from the reference</div></div><div class="causal-explanation"><span class="causal-step"></span><h4 class="causal-phase"></h4><p class="causal-focus"></p><p class="causal-detail"></p><div class="causal-signal"><span data-t="gradientSignal">Policy-gradient signal</span><strong></strong></div><p class="causal-equation">r₁ ≈ r₂ ≈ … ≈ r<sub>G</sub><br>↓<br>Aᵢ → 0 → ∇L<sub>pg</sub> → 0</p></div></div>
+
+      <figcaption data-t="causalCaption">Approximate reconstruction of Figure 2: reward saturates near step 40, false refusals rise, the template gap peaks then falls, and the gradient fades by step 100. Curves follow the reference image rather than raw training samples. <a href="#dynamics">Compare the original figures ↓</a></figcaption>
+    </figure>
+
 
   </section>
 
@@ -114,13 +121,8 @@
   </div></section>
 
   <section id="dynamics" class="section container">
-    <div class="section-head section-heading"><p class="section-label"><span>05</span><span data-t="dynamicsLabel">TRAINING DYNAMICS</span></p><h2 data-t="dynamicsTitle">Keep the learning signal alive.</h2><p data-t="dynamicsDesc">Standard GRPO progresses from formatting shortcuts to lexical shortcuts, then loses its optimization signal. DeShortcut-Align changes that trajectory.</p></div>
-    <figure class="causal-lab" id="shortcut-process" aria-labelledby="causal-title">
-      <div class="causal-heading"><div><p class="mono" data-t="causalLabel">THE SHORTCUT TRAP · FLOW & DYNAMICS</p><h3 id="causal-title" data-t="causalTitle">How the learning signal disappears.</h3></div><span class="schematic-badge" data-t="conceptOnly">Conceptual illustration</span></div>
-      <div class="causal-body"><div class="causal-scene"><canvas id="causal-canvas" role="img" aria-label="Conceptual animation of active shortcut paths, shortcut reliance, and fading learning signals"></canvas><div class="causal-curve-legend"><span class="format" data-t="formatCurve">Template reliance</span><span class="lexical" data-t="lexicalCurve">Lexical reliance</span><span class="signal" data-t="signalCurve">Learning signal</span></div><div class="causal-axis" data-t="causalAxis">Training stages · curves show qualitative trends, not measured values</div></div><div class="causal-explanation"><span class="causal-step"></span><h4 class="causal-phase"></h4><p class="causal-focus"></p><p class="causal-detail"></p><div class="causal-signal"><span data-t="gradientSignal">Policy-gradient signal</span><strong></strong></div><p class="causal-equation">r₁ ≈ r₂ ≈ … ≈ r<sub>G</sub><br>↓<br>Aᵢ → 0 → ∇L<sub>pg</sub> → 0</p></div></div>
+    <div class="section-head section-heading"><p class="section-label"><span>05</span><span data-t="dynamicsLabel">TRAINING DYNAMICS</span></p><h2 data-t="dynamicsTitle">Keep the learning signal alive.</h2><p data-t="dynamicsDesc">Compare the original training figures: standard GRPO saturates and loses its learning signal, while DeShortcut-Align maintains stronger optimization dynamics.</p></div>
 
-      <figcaption data-t="causalCaption">Formatting cues → lexical triggers → saturated rewards and little within-group variation. Packets highlight the learned shortcut; curves illustrate the mechanism. Measured training curves appear below.</figcaption>
-    </figure>
     <div class="training-comparison"><figure><div class="figure-heading"><span class="series-label baseline" data-t="standardGrpo">Standard GRPO</span><span class="mono">FIGURE 2</span></div><button class="figure-button figure-open" data-zoom="assets/training-standard.webp" aria-label="Enlarge standard GRPO training dynamics"><img src="assets/training-standard.webp" alt="Figure 2. Standard GRPO reward saturation, rising over-refusal and diminishing policy gradient." loading="lazy" width="699" height="415"></button><figcaption data-t="standardDynamics">Reward saturates, false refusals rise, and the policy-gradient signal fades.</figcaption></figure><figure><div class="figure-heading"><span class="series-label ours">DeShortcut-Align</span><span class="mono">FIGURE 4</span></div><button class="figure-button figure-open" data-zoom="assets/training-ours.webp" aria-label="Enlarge DeShortcut training dynamics"><img src="assets/training-ours.webp" alt="Figure 4. DeShortcut-Align keeps reward variation and a stronger policy-gradient signal." loading="lazy" width="703" height="426"></button><figcaption data-t="oursDynamics">AGCA and CCR reduce shortcut reliance while maintaining a stronger learning signal.</figcaption></figure></div>
 
     <div class="optimization-strip"><div><p class="mono" data-t="optLabel">ADAPTIVE REGULARIZATION · FIGURE 7</p><h3 data-t="optTitle">Balance consistency with exploration.</h3><p data-t="optDesc">The dynamic coefficient adjusts the counterfactual loss alongside the policy update. The consistency loss converges while the training reward stabilizes.</p></div><figure class="paper-figure"><button class="figure-button figure-open" data-zoom="assets/optimization.webp" aria-label="Enlarge optimization metrics"><img src="assets/optimization.webp" alt="Figure 7. Dynamic weight, counterfactual consistency loss and training reward for GRPO and PPO." loading="lazy" width="1446" height="329"></button><figcaption data-t="optCaption">Figure 7 · Dynamic weight, consistency loss, and training reward.</figcaption></figure></div>
