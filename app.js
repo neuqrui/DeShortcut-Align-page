@@ -38,11 +38,11 @@ Object.assign(zh, {
   attackMean:'平均',attackNote:'Table 4 · 防御成功率 (%) ↑ · 7B · 坐标从零开始',
   validatorDesc:'独立模型与人工验证良性对比数据, 并检查安全评测器的可靠性.',validatorTitle:'对比样例是否保持良性?',judgeTitle:'评测器与人工判断是否一致?',validatorPipeline:'验证流程',benignAccuracy:'良性验证准确率',singleStage:'单阶段',humanExpert:'人工专家',twoLayer:'两层过滤',validatorCaption:'AGCA 生成的良性请求 · 验证准确率 (%)',judgeModel:'模型',rawAgreement:'原始一致率',basePolicy:'基础策略',judgeCaption:'150 个采样样例 · DSR 与逐项标签一致率 (%)',
   paperTitle:'<span class="title-de">去耦</span>虚假<span class="title-shortcut">捷径</span>, 实现大推理模型的鲁棒安全<span class="title-align">对齐</span>',
-  titleHint:'↕ 向上移动聚合 · 向下移动分散 · 点击切换', compare:'鲁棒性、误拒率与推理能力', allBenchmarks:'展开误拒率分项',
+  titleHint:'↕ 向下移动聚合 · 向上移动分散 · 点击切换', compare:'鲁棒性、误拒率与推理能力', allBenchmarks:'展开误拒率分项',
   tableKey:'加粗: 对齐方法最优值 · 防御率: 有模板 / 无模板', tableFootnote:'Table 1 · 数值单位为 %. Δavg 是平均模板差距, 单位为百分点 (↓). FRR 为平均误拒率 (↓), Acc 为平均推理 pass@1 (↑). 加权防御率使用有模板条件. 最优值不含 Base.',
   componentDesc:'移除 CCR 后, 模板依赖上升; 移除 AGCA 后, 误拒率回升.', heuristicTitle:'选择影响决策的 token.', heuristicDesc:'在 SFT 的归因策略对比中, TSS 取得最低误拒率.',
   ablationNote:'7B · Δavg: 模板差距 (百分点) · FRR: 误拒率 (%) · DSR: 加权防御率 (%) · Acc: 推理 (%)', strategyNote:'Table 3 · DSR: 加权防御率 (↑); FRR: 平均误拒率 (↓). 单位为 %.',
-  causalLabel:'SHORTCUT 的形成 · 3D 过程演示', causalTitle:'学习信号如何逐渐消失.', conceptOnly:'概念示意', causalAxis:'每根柱代表一个 rollout 的奖励 · 高度仅为示意', gradientSignal:'策略梯度信号', processProgress:'训练过程', causalCaption:'格式线索 → 词汇触发 → 奖励饱和, 组内差异消失. 基于论文 shortcut 假说的机制示意; 实测曲线见最后的训练动态部分.'
+  causalLabel:'SHORTCUT 的形成 · 路径与动态曲线', causalTitle:'学习信号如何逐渐消失.', conceptOnly:'概念示意', causalAxis:'训练阶段 · 曲线仅表示趋势，不代表实测数值', formatCurve:'模板依赖', lexicalCurve:'词汇依赖', signalCurve:'学习信号', learnedCue:'当前学到的关联', gradientSignal:'策略梯度信号', processProgress:'训练过程', causalCaption:'格式线索 → 词汇触发 → 奖励饱和, 组内差异消失. 流动粒子突出已学到的 shortcut, 曲线展示机制变化. 实测训练曲线见下方.'
 });
 const originals = new Map($$('[data-t]').map(el => [el, el.innerHTML]));
 function tr(en, cn) { return lang === 'zh' ? cn : en; }
